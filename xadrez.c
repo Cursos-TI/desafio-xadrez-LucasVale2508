@@ -1,14 +1,12 @@
 #include <stdio.h>
 
-
 int main()
 {
-    printf("Bem vindo ao jogo do xadrez!\n\n"); // Apresentação
 
     // Mover a torre cinco casas para a direita
 
     printf("\n== Movimento da Torre ==\n");
-    for (int i = 0; i < 5; i++)
+    for (int t = 0; t < 5; t++)
     {
         printf("Torre move para a Direita\n"); // Imprime a direção do movimento da torre
     }
@@ -23,7 +21,7 @@ int main()
         b++;
     }
 
-    // Mover a Rainha oito casas para a esquerda
+    // Mover a Rainha oito casas para Sa esquerda
     int r = 0;
     printf("\n== Movimento da Rainha ==\n");
     do
@@ -31,6 +29,22 @@ int main()
         printf("Rainha move para esquerda\n"); // Imprime a direção do movimento da rainha
         r++;
     } while (r < 8);
+
+    // Movimento do cavalo
+
+    int movimentoCompleto = 1; // Variavel para controlar movimento em L
+
+    printf("\n== Movimento do Cavalo ==\n");
+
+    while (movimentoCompleto--)
+    {
+        for (int c = 0; c < 2; c++)
+        {
+            printf("Cavalo move para cima\n");
+        }
+
+        printf("Cavalo move para direita\n");
+    }
 
     return 0;
 }
