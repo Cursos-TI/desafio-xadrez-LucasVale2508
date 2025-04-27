@@ -1,50 +1,70 @@
 #include <stdio.h>
 
+// Função recursiva para a Torre
+void moverTorre(int casas)
+{
+    if (casas > 0)
+    {
+        printf("Cima\n");
+        moverTorre(casas - 1);
+    }
+}
+
+// Função recursiva para o Bispo e com loops aninhados 
+void moverBispo(int casas)
+{
+    if (casas > 0)
+    {
+        printf("Cima\n"); // Movimento vertical
+
+        for (int i = 0; i < 1; i++)
+        {                        
+            printf("Direita\n"); // Movimento horizontal dentro do vertical
+        }
+
+        moverBispo(casas - 1); // Recursão chamando o próximo movimento diagonal
+    }
+}
+
+// Função recursiva para a Rainha (para a esquerda)
+void moverRainhaEsquerda(int casas)
+{
+    if (casas > 0)
+    {
+        printf("Esquerda\n");
+        moverRainhaEsquerda(casas - 1);
+    }
+}
+
+// Função para o Cavalo
+void moverCavalo()
+{
+    for (int i = 0; i < 3; i++)
+    { // 3 para cima
+        printf("Cima\n");
+    }
+    for (int j = 0; j < 2; j++)
+    { // 2 para direita
+        printf("Direita\n");
+    }
+}
+
 int main()
 {
 
-    // Mover a torre cinco casas para a direita
+    printf("=== Bem vindo ao Jogo do Xadrez MateCheck! ===\n");
 
-    printf("\n== Movimento da Torre ==\n");
-    for (int t = 0; t < 5; t++)
-    {
-        printf("Torre move para a Direita\n"); // Imprime a direção do movimento da torre
-    }
+    printf("\nMovimentos da Torre:\n");
+    moverTorre(5); // Torre: 5 movimentos para cima
 
-    // Mover o bispo cinco casas na diagonal para cima e à direita
+    printf("\nMovimentos do Bispo:\n");
+    moverBispo(5); // Bispo: 5 movimentos diagonais (1 cima + 1 direita por casa)
 
-    int b = 0; // contador para o bispo
-    printf("\n== Movimento do Bispo ==\n");
-    while (b < 5)
-    {
-        printf("Bispo move para Cima, Direita\n"); // Imprime a direção do movimento do bispo
-        b++;
-    }
+    printf("\nMovimentos da Rainha:\n");
+    moverRainhaEsquerda(8); // Rainha: 8 movimentos para esquerda
 
-    // Mover a Rainha oito casas para Sa esquerda
-    int r = 0;
-    printf("\n== Movimento da Rainha ==\n");
-    do
-    {
-        printf("Rainha move para esquerda\n"); // Imprime a direção do movimento da rainha
-        r++;
-    } while (r < 8);
-
-    // Movimento do cavalo
-
-    int movimentoCompleto = 1; // Variavel para controlar movimento em L
-
-    printf("\n== Movimento do Cavalo ==\n");
-
-    while (movimentoCompleto--)
-    {
-        for (int c = 0; c < 2; c++)
-        {
-            printf("Cavalo move para cima\n");
-        }
-
-        printf("Cavalo move para direita\n");
-    }
+    printf("\nMovimentos do Cavalo:\n");
+    moverCavalo(); // Cavalo: 3 cima + 2 direita
 
     return 0;
 }
